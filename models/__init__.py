@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """storage engine initiator & classes preparation module"""
 
-import models
-from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 
-overviewDict = {
-    "BaseModel": BaseModel
-}
+storage = FileStorage()
+storage.reload()
