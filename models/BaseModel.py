@@ -37,5 +37,10 @@ class BaseModel:
         ## engine.save
     
     def to_dic(self):
-        return "to dict"
+        """instance attributes as dictionary"""
+        the_dict = self.__dict__.copy()
+        the_dict.update({"__class__": self.__class__.__name__})
+        the_dict.update({"created_at": str(self.created_at.isoformat())})
+        the_dict.update({"updated_at": str(self.updtaed_at.isoformat())})
+        return the_dict
     
