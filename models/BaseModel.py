@@ -9,12 +9,12 @@ class BaseModel:
     """BaseModel class"""
 
     def __init__(self, *args, **kwargs):
-        "constructor for basemodel class"
+        """constructor for basemodel class"""
         if not kwargs:
             self.id = str(ids())
             self.created_at = dt.now()
             self.updtaed_at = dt.now()
-            ## engine.new.save
+            # engine.new.save
         else:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -30,12 +30,12 @@ class BaseModel:
         """representation of baseModel class"""
         rep = f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
         return rep
-    
+
     def save(self):
         """Save Method to save the instance"""
         self.updtaed_at = dt.now()
-        ## engine.save
-    
+        # engine.save
+
     def to_dic(self):
         """instance attributes as dictionary"""
         the_dict = self.__dict__.copy()
@@ -43,4 +43,3 @@ class BaseModel:
         the_dict.update({"created_at": str(self.created_at.isoformat())})
         the_dict.update({"updated_at": str(self.updtaed_at.isoformat())})
         return the_dict
-    
