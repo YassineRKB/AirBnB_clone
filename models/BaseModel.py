@@ -14,6 +14,7 @@ class BaseModel:
             self.id = str(ids())
             self.created_at = dt.now()
             self.updtaed_at = dt.now()
+            ## engine.new.save
         else:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -31,7 +32,9 @@ class BaseModel:
         return rep
     
     def save(self):
-        return "saved"
+        """Save Method to save the instance"""
+        self.updtaed_at = dt.now()
+        ## engine.save
     
     def to_dic(self):
         return "to dict"
