@@ -25,9 +25,10 @@ class BaseModel:
                     else:
                         setattr(self, key, value)
 
-
     def __str__(self):
-        return "str"
+        """representation of basemodel class"""
+        rep = f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return rep
     
     def save(self):
         return "saved"
