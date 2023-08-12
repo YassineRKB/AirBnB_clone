@@ -2,7 +2,6 @@
 """base model class module"""
 
 import models
-from models import storage
 from datetime import datetime as dt
 from uuid import uuid4 as ids
 
@@ -16,7 +15,7 @@ class BaseModel:
             self.id = str(ids())
             self.created_at = dt.now()
             self.updtaed_at = dt.now()
-            storage.new(self)
+            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -39,7 +38,7 @@ class BaseModel:
     def save(self):
         """Save Method to save the instance"""
         self.updtaed_at = dt.now()
-        storage.save()
+        models.storage.save()
 
     def to_dic(self):
         """instance attributes as dictionary"""
