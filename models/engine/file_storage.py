@@ -10,9 +10,6 @@ class FileStorage():
 
     __file_path = "file.json"
     __objects = {}
-    class_dict = {
-        "BaseModel": BaseModel
-    }
 
     def all(self):
         """function to get dict of serialized obj"""
@@ -20,9 +17,8 @@ class FileStorage():
 
     def new(self, obj):
         """func to serialize a new obj"""
-        typeobjName = type(obj).__name__
-        key = f"{typeobjName}.{obj.id}"
-        self.__objects[key] = obj
+        index = "{}.{}".format(type(obj).__name__, obj.id)
+        self.__objects[index] = obj
 
     def save(self):
         """func to update json file with serialized objects"""
@@ -35,10 +31,9 @@ class FileStorage():
     def reload(self):
         """func to load data from file + create instances accordingly"""
         try:
-            with open(self.__file_path, "r") as r:
+            with open(self.__file_path) as r:
                 data = json.load(r)
             for key, value in data.items():
-                obj = self.class_dict[value['__class__']](**value)
-                self.__objects[key] = obj
+                self.new(eval(key.split(".")[0])(**value))
         except FileNotFoundError:
             pass
