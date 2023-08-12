@@ -12,7 +12,12 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """constructor for basemodel class"""
-        if kwargs:
+        if not kwargs:
+            self.id = str(ids())
+            self.created_at = dt.now()
+            self.updtaed_at = dt.now()
+            storage.new(self)
+        else:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key == "id":
@@ -22,11 +27,6 @@ class BaseModel:
                         setattr(self, key, dt.strftime(value, dateFormat))
                     else:
                         setattr(self, key, value)
-        else:
-            self.id = str(ids())
-            self.created_at = dt.now()
-            self.updtaed_at = dt.now()
-            storage.new(self)
 
     def __str__(self):
         """representation of baseModel class"""
