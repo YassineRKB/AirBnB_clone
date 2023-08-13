@@ -104,29 +104,30 @@ class HBNBCommand(cmd.Cmd):
             return
         print(objects)
 
-        def do_update(self, line):
-            """Do Update on right conditions"""
-            args = tuple(line.split())
-            if len(args) >= 4:
-                key = "{}.{}".format(args[0], args[1])
-                cast = type(eval(args[3]))
-                arg3 = args[3]
-                arg3 = arg3.strip('"')
-                arg3 = arg3.strip("'")
-                setattr(storage.all()[key], args[2], cast(arg3))
-                storage.all()[key].save()
-            elif len(args) == 0:
-                print("** class name missing **")
-            elif args[0] not in HBNBCommand.classes:
-                print("** class doesn't exist **")
-            elif len(args) == 1:
-                print("** instance id missing **")
-            elif (f"{args[0]}.{args[1]}") not in storage.all().keys():
+    def do_update(self, line):
+        """Updates instance attributes using class name and id"""
+        args = line.split()
+        if len(args) >= 4:
+            class_name = args[0]
+            instance_id = args[1]
+            attribute_name = args[2]
+            new_value = " ".join(args[3:]).strip('"').strip("'")
+            key = f"{class_name}.{instance_id}"
+            if key not in storage.all().keys():
                 print("** no instance found **")
-            elif len(args) == 2:
-                print("** attribute name missing **")
-            else:
-                print("** value missing **")
+                return
+            instance = storage.all()[key]
+            if not hasattr(instance, attribute_name):
+                print("** attribute doesn't exist **")
+                return
+            setattr(
+                instance,
+                attribute_name,
+                type(getattr(instance, attribute_name))(new_value)
+            )
+            storage.save()
+        else:
+            pass
 
     def do_count(self, line):
         """Get number of instances"""
