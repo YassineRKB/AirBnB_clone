@@ -11,7 +11,15 @@ import re
 class HBNBCommand(cmd.Cmd):
     """Project Console: class file"""
     prompt = "(hbnb) "
-    classes = {"BaseModel", "User"}
+    classes = {
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review"
+    }
 
     def do_EOF(self, line):
         """Quit command to exit the program"""
