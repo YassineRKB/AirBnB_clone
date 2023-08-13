@@ -8,6 +8,7 @@ from models.state import State
 from models.city import City
 from models.place import Place
 from models.review import Review
+from models.amenity import Amenity
 
 
 class FileStorage():
