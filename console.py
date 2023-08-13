@@ -3,6 +3,7 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 import re
 
@@ -10,7 +11,7 @@ import re
 class HBNBCommand(cmd.Cmd):
     """Project Console: class file"""
     prompt = "(hbnb) "
-    classes = {"BaseModel"}
+    classes = {"BaseModel", "User"}
 
     def do_EOF(self, line):
         """Quit command to exit the program"""

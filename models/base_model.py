@@ -17,15 +17,21 @@ class BaseModel:
             self.updated_at = dt.now()
             models.storage.new(self)
         else:
-            for key, value in kwargs.items():
-                if key != "__class__":
-                    if key == "id":
-                        setattr(self, key, str(value))
-                    elif key == "updated_at" or "created_at":
-                        dateFormat = "%Y-%m-%dT%H:%M:%S.%f"
-                        setattr(self, key, dt.strptime(value, dateFormat))
-                    else:
-                        setattr(self, key, value)
+            for key, val in kwargs.items():
+                if "__class__" == key:
+                    pass
+                elif "created_at" == key:
+                    self.created_at = dt.strptime(
+                        kwargs["created_at"],
+                        "%Y-%m-%dT%H:%M:%S.%f"
+                        )
+                elif "updated_at" == key:
+                    self.updated_at = dt.strptime(
+                        kwargs["updated_at"],
+                        "%Y-%m-%dT%H:%M:%S.%f"
+                        )
+                else:
+                    setattr(self, key, val)
 
     def __str__(self):
         """representation of baseModel class"""
