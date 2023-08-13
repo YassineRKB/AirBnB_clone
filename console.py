@@ -106,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
 
         def do_update(self, line):
             """Do Update on right conditions"""
-            args = line.split()
+            args = tuple(line.split())
             if len(args) >= 4:
                 key = "{}.{}".format(args[0], args[1])
                 cast = type(eval(args[3]))
