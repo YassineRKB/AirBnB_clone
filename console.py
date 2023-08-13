@@ -129,6 +129,15 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** incorrect number of arguments **")
 
+    def do_count(self, line):
+        """Get number of instances"""
+        class_name = line.strip()
+        if class_name in HBNBCommand.classes:
+            count = sum(1 for key in storage.all() if class_name in key)
+            print(count)
+        else:
+            print("** class doesn't exist **")
+
     def emptyline(self):
         """pass on empty line"""
         pass
