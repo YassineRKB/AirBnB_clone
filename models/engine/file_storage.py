@@ -37,9 +37,10 @@ class FileStorage():
     def reload(self):
         """func to load data from file + create instances accordingly"""
         try:
-            with open(self.__file_path) as r:
-                data = json.load(r)
-            for key, value in data.items():
-                self.new(eval(key.split(".")[0])(**value))
+            with open(self.__file_path, 'r') as r:
+                objects = json.load(r)
+            for value in objects.values():
+                obj = value['__class__']
+                self.new(eval(obj)(**value))
         except FileNotFoundError:
             pass
