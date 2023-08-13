@@ -124,6 +124,10 @@ class HBNBCommand(cmd.Cmd):
         """Display quite help text"""
         print("Quit command to exit the program\n")
 
+    def help_show(self):
+        """Display quite help text"""
+        print("show command to show instance of the class\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
