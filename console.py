@@ -166,11 +166,18 @@ class HBNBCommand(cmd.Cmd):
                 HBNBCommand.do_all(self, class_arg)
             elif command == 'count':
                 HBNBCommand.do_count(self, class_arg)
-            elif command == 'show' or command == 'destroy':
+            elif command == 'show':
                 if len(args) != 1:
                     print("*** Unknown syntax: {}".format(line))
                     return
                 HBNBCommand.do_show(
+                    self, f"{class_arg} {args[0]}"
+                    )
+            elif command == 'destroy':
+                if len(args) != 1:
+                    print("*** Unknown syntax: {}".format(line))
+                    return
+                HBNBCommand.do_destroy(
                     self, f"{class_arg} {args[0]}"
                     )
             elif command == 'update':
