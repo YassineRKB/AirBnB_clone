@@ -141,6 +141,41 @@ class HBNBCommand(cmd.Cmd):
         """Display quite help text"""
         print("show command to show instance of the class\n")
 
+    def default(self, line):
+        """Method to allow using class name with console commands"""
+        args = line.split('.')
+        if len(args) == 1:
+            print(f"*** Unknown syntax: {line}")
+            return
+        class_arg = args[0]
+        command_args = args[1].split('(')
+        if len(command_args) == 2:
+            command = command_args[0]
+            args = command_args[1].rstrip(')').split(',')
+            args = [arg.strip(" '\"") for arg in args]
+            if command == 'all':
+                HBNBCommand.do_all(self, class_arg)
+            elif command == 'count':
+                HBNBCommand.do_count(self, class_arg)
+            elif command == 'show' or command == 'destroy':
+                if len(args) != 1:
+                    print("*** Unknown syntax: {}".format(line))
+                    return
+                HBNBCommand.do_show(
+                    self, f"{class_arg} {args[0]}"
+                    )
+            elif command == 'update':
+                if len(args) != 3:
+                    print("*** Unknown syntax: {}".format(line))
+                    return
+                HBNBCommand.do_update(
+                    self, f"{class_arg} {args[0]} {args[1]} {args[2]}"
+                    )
+            else:
+                print("*** Unknown syntax: {}".format(line))
+        else:
+            print("*** Unknown syntax: {}".format(line))
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
