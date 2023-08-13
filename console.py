@@ -107,56 +107,35 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, line):
         """Updates instance attributes using class name and id"""
         args = line.split()
-        
+
         if len(args) < 2:
             print("** class name missing **")
             return
-        
         class_name = args[0]
-        instance_id = None
-        attribute_name = None
-        new_value = None
-        
-        if len(args) >= 2:
-            instance_id = args[1]
-        if len(args) >= 3:
-            attribute_name = args[2]
-        if len(args) >= 4:
-            new_value = " ".join(args[3:]).strip('"').strip("'")
-        
-        if not class_name:
-            print("** class name missing **")
-            return
-        
-        if class_name not in models.available_classes():
+        if class_name not in HBNBCommand.classes():
             print("** class doesn't exist **")
             return
-        
-        if not instance_id:
+        if len(args) < 2:
             print("** instance id missing **")
             return
-        
+        instance_id = args[1]
         key = f"{class_name}.{instance_id}"
         instance_dict = storage.all()
-        
         if key not in instance_dict:
             print("** no instance found **")
             return
-        
         instance = instance_dict[key]
-        
-        if not attribute_name:
+        if len(args) < 3:
             print("** attribute name missing **")
             return
-        
+        attribute_name = args[2]
         if not hasattr(instance, attribute_name):
             print("** attribute doesn't exist **")
             return
-        
-        if not new_value:
+        if len(args) < 4:
             print("** value missing **")
             return
-        
+        new_value = " ".join(args[3:]).strip('"').strip("'")
         setattr(
             instance,
             attribute_name,
