@@ -125,31 +125,31 @@ class TestConsole(unittest.TestCase):
             self.typing.onecmd("destroy")
             self.assertEqual(
                 "** class name missing **\n",
-                capturedOutputfake_output.getvalue()
+                capturedOutput.getvalue()
                 )
-        with patch('sys.stdout', new=StringIO()) as capturedOutputfake_output:
+        with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("destroy TheWorld")
             self.assertEqual(
                 "** class doesn't exist **\n",
-                capturedOutputfake_output.getvalue()
+                capturedOutput.getvalue()
                 )
-        with patch('sys.stdout', new=StringIO()) as capturedOutputfake_output:
+        with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("destroy BaseModel 12345")
             self.assertEqual(
                 "** no instance found **\n",
-                capturedOutputfake_output.getvalue()
+                capturedOutput.getvalue()
                 )
-        with patch('sys.stdout', new=StringIO()) as capturedOutputfake_output:
+        with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("destroy User")
             self.assertEqual(
                 "** instance id missing **\n",
-                capturedOutputfake_output.getvalue()
+                capturedOutput.getvalue()
                 )
-        with patch('sys.stdout', new=StringIO()) as capturedOutputfake_output:
+        with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("City.destroy('123')")
             self.assertEqual(
                 "** no instance found **\n",
-                capturedOutputfake_output.getvalue()
+                capturedOutput.getvalue()
                 )
 
 
