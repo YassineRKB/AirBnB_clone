@@ -105,42 +105,31 @@ class HBNBCommand(cmd.Cmd):
         print(objects)
 
     def do_update(self, line):
-        """Updates instance attributes using class name and id"""
+        """do Update on right conditions"""
         args = line.split()
-        if len(args) < 2:
-            print("** class name missing **")
-            return
-        
         if len(args) >= 4:
-            class_name = args[0]
-            if class_name not in HBNBCommand.available_classes():
-                print("** class doesn't exist **")
-                return
-            if len(args) < 2:
-                print("** instance id missing **")
-                return
-            instance_id = args[1]
-            attribute_name = args[2]
-            new_value = " ".join(args[3:]).strip('"').strip("'")
+            class_name, instance_id, attribute_name, new_value = args[:4]
             key = f"{class_name}.{instance_id}"
-            if key not in storage.all().keys():
+            instance = storage.all()
+            if key in instance:
+                instance = instance[key]
+                cast = type(eval(new_value))
+                setattr(instance, attribute_name, cast(new_value.strip('"').strip("'")))
+                instance.save()
+            else:
                 print("** no instance found **")
-                return
-            instance = storage.all()[key]
-            if not hasattr(instance, attribute_name):
-                print("** attribute doesn't exist **")
-                return
-            if len(args) < 4:
-                print("** value missing **")
-                return
-            setattr(
-                instance,
-                attribute_name,
-                type(getattr(instance, attribute_name))(new_value)
-            )
-            storage.save()
+        elif len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+        elif len(args) == 1:
+            print("** instance id missing **")
+        elif f"{args[0]}.{args[1]}" not in storage.all().keys():
+            print("** no instance found **")
+        elif len(args) == 2:
+            print("** attribute name missing **")
         else:
-            pass
+            print("** value missing **")
 
     def do_count(self, line):
         """Get number of instances"""
