@@ -13,22 +13,18 @@ class TestBaseModel(unittest.TestCase):
     """unitest class BaseModel"""
 
     @classmethod
-    def test_setUpClass(cls):
+    def setUpClass(cls):
         cls.base1 = BaseModel()
         cls.base1.name = "Jeffry"
         cls.base1.my_number = 69
 
     @classmethod
-    def test_tearDownClass(cls):
+    def tearDownClass(cls):
         del cls.base1
         try:
             os.remove("file.json")
         except FileNotFoundError:
             pass
-
-    def test_reRunSet(self):
-        """rerun"""
-        pass
 
     def test_basemodel_docstrings(self):
         """Test: models.base_model module for documentation"""
