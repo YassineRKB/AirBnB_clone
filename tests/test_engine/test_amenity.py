@@ -24,15 +24,6 @@ class TestAmenity(unittest.TestCase):
         """Test: module has documentation"""
         self.assertIsNotNone(models.amenity.__doc__)
 
-    def amenity_test_save(self):
-        """Test: check save"""
-        self.amenity1.save()
-        self.assertNotEqual(self.amenity1.created_at, self.amenity1.updated_at)
-
-    def amenity_test_to_dict(self):
-        """Test: check to_dict"""
-        self.assertEqual('to_dict' in dir(self.amenity1), True)
-
 
 if __name__ == "__main__":
     unittest.main()
