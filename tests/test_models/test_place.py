@@ -9,6 +9,31 @@ from models.base_model import BaseModel
 class TestPlace(unittest.TestCase):
     """unitest place"""
 
+    @classmethod
+    def setUpClass(cls):
+        """init class"""
+        cls.place1 = Place()
+        cls.place1.city_id = "mars marshs"
+        cls.place1.user_id = "ddjin"
+        cls.place1.name = "Bobirastis"
+        cls.place1.description = "cozy"
+        cls.place1.number_rooms = 0
+        cls.place1.number_bathrooms = 0
+        cls.place1.max_guest = 0
+        cls.place1.price_by_night = 0
+        cls.place1.latitude = 0.0
+        cls.place1.longitude = 0.0
+        cls.place1.amenity_ids = []
+
+    @classmethod
+    def tearDownClass(cls):
+        """destroy storage file"""
+        del cls.place1
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
+
     def test_place_class_doc(self):
         """Test: Place class has documentaion"""
         self.assertIsNotNone(Place.__doc__)
