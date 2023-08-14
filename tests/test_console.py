@@ -33,21 +33,21 @@ class TestConsole(unittest.TestCase):
         except Exception:
             pass
 
-    def console_test_class_doc(self):
+    def test_console_class_doc(self):
         """Test BaseModel class for documentation"""
         self.assertIsNotNone(console.__doc__)
 
-    def console_test_docstrings(self):
+    def test_console_docstrings(self):
         """Test if docstrings exist in console.py"""
         self.assertTrue(len(console.__doc__) >= 1)
 
-    def console_test_emptyline(self):
+    def test_console_emptyline(self):
         """Test empty user input"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("\n")
             self.assertEqual(capturedOutput.getvalue(), '')
 
-    def console_test_all(self):
+    def test_console_all(self):
         """Test: command All output"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("all ghost")
@@ -59,7 +59,7 @@ class TestConsole(unittest.TestCase):
             self.typing.onecmd("all BaseModel")
             self.assertEqual("[]\n", capturedOutput.getvalue())
 
-    def console_test_create(self):
+    def test_console_create(self):
         """Test: command create output"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("create")
@@ -80,7 +80,7 @@ class TestConsole(unittest.TestCase):
             self.typing.onecmd("create User")
             self.typing.onecmd("create User")
 
-    def console_test_update(self):
+    def test_console_update(self):
         """Test command update output"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("update")
@@ -103,7 +103,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** no instance found **\n",
                              capturedOutput.getvalue())
 
-    def console_test_show(self):
+    def test_console_show(self):
         """Test command show output"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
             self.typing.onecmd("show")
@@ -122,7 +122,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** class doesn't exist **\n",
                              capturedOutput.getvalue())
 
-    def console_test_destroy(self):
+    def test_console_destroy(self):
         """Test command destroy output"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("destroy")
