@@ -77,15 +77,6 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(self.place1.amenity_ids), list)
         self.assertEqual(type(self.place1.longitude), float)
 
-    def place_test_save(self):
-        """Test: check save"""
-        self.place1.save()
-        self.assertNotEqual(self.place1.created_at, self.place1.updated_at)
-
-    def place_test_to_dict(self):
-        """Test: check to_dict"""
-        self.assertEqual('to_dict' in dir(self.place1), True)
-
 
 if __name__ == "__main__":
     unittest.main()
