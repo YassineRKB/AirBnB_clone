@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Unittest amenity module"""
-
 import unittest
 from models.amenity import Amenity
 import models.amenity
