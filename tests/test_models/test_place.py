@@ -34,19 +34,19 @@ class TestPlace(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    def place_test_class_doc(self):
+    def test_place_class_doc(self):
         """Test: Place class has documentaion"""
         self.assertIsNotNone(Place.__doc__)
 
-    def place_test_is_subclass(self):
+    def test_place_is_subclass(self):
         """Test: assert if its a subclass"""
         self.assertTrue(issubclass(self.place1.__class__, BaseModel), True)
 
-    def place_test_functions_check(self):
+    def test_place_functions_check(self):
         """Test: check funcs"""
         self.assertIsNotNone(Place.__doc__)
 
-    def place_test_attributes_check(self):
+    def test_place_attributes_check(self):
         """Test: check attr"""
         self.assertTrue('id' in self.place1.__dict__)
         self.assertTrue('city_id' in self.place1.__dict__)
@@ -63,7 +63,7 @@ class TestPlace(unittest.TestCase):
         self.assertTrue('created_at' in self.place1.__dict__)
         self.assertTrue('updated_at' in self.place1.__dict__)
 
-    def place_test_attributes_datatype(self):
+    def test_place_attributes_datatype(self):
         """Test: assert attr datatype"""
         self.assertEqual(type(self.place1.city_id), str)
         self.assertEqual(type(self.place1.user_id), str)
