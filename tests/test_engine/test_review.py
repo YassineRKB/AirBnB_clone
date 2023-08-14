@@ -39,12 +39,12 @@ class TestReview(unittest.TestCase):
 
     def test_save(self):
         """Test: check save"""
-        self.place1.save()
-        self.assertNotEqual(self.place1.created_at, self.place1.updated_at)
+        self.rev1.save()
+        self.assertNotEqual(self.rev1.created_at, self.rev1.updated_at)
 
     def test_to_dict(self):
         """Test: check to_dict"""
-        self.assertEqual('to_dict' in dir(self.place1), True)
+        self.assertEqual('to_dict' in dir(self.rev1), True)
 
 
 if __name__ == "__main__":
