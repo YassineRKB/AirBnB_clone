@@ -8,15 +8,15 @@ import models.state
 class TestState(unittest.TestCase):
     """unitest State class"""
 
-    def state_test_module_doc(self):
+    def test_state_module_doc(self):
         """Test: module has documentation"""
         self.assertIsNotNone(models.state.__doc__)
 
-    def state_test_class_doc(self):
+    def test_state_class_doc(self):
         """Test: class has documentation"""
         self.assertIsNotNone(State.__doc__)
 
-    def state_test_attribute_check(self):
+    def test_state_attribute_check(self):
         """Test: attr check"""
         state = State()
         self.assertTrue(hasattr(state, "name"))
