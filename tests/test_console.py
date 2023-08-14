@@ -41,7 +41,6 @@ class TestConsole(unittest.TestCase):
         """Test if docstrings exist in console.py"""
         self.assertTrue(len(console.__doc__) >= 1)
 
-    """Test the outputs"""
     def console_test_emptyline(self):
         """Test empty user input"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
