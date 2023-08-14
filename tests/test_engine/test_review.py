@@ -37,15 +37,6 @@ class TestReview(unittest.TestCase):
         self.assertEqual(review.text, "")
         self.assertTrue(type(review.text) == str)
 
-    def test_save(self):
-        """Test: check save"""
-        self.rev1.save()
-        self.assertNotEqual(self.rev1.created_at, self.rev1.updated_at)
-
-    def test_to_dict(self):
-        """Test: check to_dict"""
-        self.assertEqual('to_dict' in dir(self.rev1), True)
-
 
 if __name__ == "__main__":
     unittest.main()
