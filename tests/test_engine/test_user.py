@@ -56,6 +56,15 @@ class TestUser(unittest.TestCase):
         self.assertEqual(type(self.my_user.email), str)
         self.assertEqual(type(self.my_user.password), str)
 
+    def user_test_check_save(self):
+        """Test: check save"""
+        self.my_user.save()
+        self.assertNotEqual(self.my_user.created_at, self.my_user.updated_at)
+
+    def user_test_to_dict(self):
+        """Test: to_dict check"""
+        self.assertEqual('to_dict' in dir(self.my_user), True)
+
 
 if __name__ == "__main__":
     unittest.main()

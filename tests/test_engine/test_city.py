@@ -38,14 +38,6 @@ class TestCity(unittest.TestCase):
         """Test: city module has documentation"""
         self.assertIsNotNone(models.city.__doc__)
 
-    def city_test_save(self):
-        """Test: check save"""
-        self.city1.save()
-        self.assertNotEqual(self.city1.created_at, self.city1.updated_at)
-
-    def city_test_to_dict(self):
-        """Test: check to_dict"""
-        self.assertEqual('to_dict' in dir(self.city1), True)
 
 
 if __name__ == "__main__":
