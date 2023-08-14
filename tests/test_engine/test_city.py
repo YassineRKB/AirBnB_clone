@@ -39,6 +39,5 @@ class TestCity(unittest.TestCase):
         self.assertIsNotNone(models.city.__doc__)
 
 
-
 if __name__ == "__main__":
     unittest.main()
