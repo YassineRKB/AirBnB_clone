@@ -33,7 +33,7 @@ class TestFileStorage(unittest.TestCase):
         except:
             pass
 
-    def storage_test_new(self):
+    def test_storage_new(self):
         """Test: new"""
         m_storage = FileStorage()
         instances_dic = m_storage.all()
@@ -44,7 +44,7 @@ class TestFileStorage(unittest.TestCase):
         key = klien.__class__.__name__ + "." + str(klien.id)
         self.assertIsNotNone(instances_dic[key])
 
-    def storage_test_all(self):
+    def test_storage_all(self):
         """Test: all (returns dictionary <class>.<id> : <obj instance>)"""
         storage = FileStorage()
         instances_dic = storage.all()
@@ -52,7 +52,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(instances_dic), dict)
         self.assertIs(instances_dic, storage._FileStorage__objects)
 
-    def storage_test_reload(self):
+    def test_storage_reload(self):
         """Test: reload (reloads objects from string file)"""
         a_storage = FileStorage()
         try:
