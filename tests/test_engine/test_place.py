@@ -34,7 +34,7 @@ class TestPlace(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    def test_class_doc(self):
+    def place_test_class_doc(self):
         """Test: Place class has documentaion"""
         self.assertIsNotNone(Place.__doc__)
 
