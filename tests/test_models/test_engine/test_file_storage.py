@@ -30,7 +30,7 @@ class TestFileStorage(unittest.TestCase):
     def teardown(self):
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
 
     def test_storage_new(self):
@@ -57,7 +57,7 @@ class TestFileStorage(unittest.TestCase):
         a_storage = FileStorage()
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
         with open("file.json", "w") as f:
             f.write("{}")
@@ -65,3 +65,7 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(a_storage.reload(), None)
+
+
+if __name__ == "__main__":
+    unittest.main()
