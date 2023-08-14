@@ -33,6 +33,10 @@ class TestConsole(unittest.TestCase):
         except Exception:
             pass
 
+    def console_test_class_doc(self):
+        """Test BaseModel class for documentation"""
+        self.assertIsNotNone(console.__doc__)
+
     def console_test_docstrings(self):
         """Test if docstrings exist in console.py"""
         self.assertTrue(len(console.__doc__) >= 1)
