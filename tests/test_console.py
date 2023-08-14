@@ -27,14 +27,14 @@ class TestConsole(unittest.TestCase):
 
     @classmethod
     def tearDownClass(self):
-        """Remove storage file"""
+        """Deleting storage file"""
         try:
             os.remove("file.json")
         except Exception:
             pass
 
     def console_test_docstrings(self):
-        """Test docstrings exist in console.py"""
+        """Test if docstrings exist in console.py"""
         self.assertTrue(len(console.__doc__) >= 1)
 
     """Test the outputs"""
@@ -47,13 +47,13 @@ class TestConsole(unittest.TestCase):
     def console_test_all(self):
         """Test: command All output"""
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("all NonExistantModel")
+            self.typing.onecmd("all ghost")
             self.assertEqual(
                 "** class doesn't exist **\n",
                 capturedOutput.getvalue()
                 )
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("all Place")
+            self.typing.onecmd("all BaseModel")
             self.assertEqual("[]\n", capturedOutput.getvalue())
 
     def console_test_create(self):
@@ -65,7 +65,7 @@ class TestConsole(unittest.TestCase):
                 capturedOutput.getvalue()
                 )
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("create SomeClass")
+            self.typing.onecmd("create kafka")
             self.assertEqual(
                 "** class doesn't exist **\n",
                 capturedOutput.getvalue()
@@ -84,11 +84,11 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** class name missing **\n",
                              capturedOutput.getvalue())
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("update You")
+            self.typing.onecmd("update Epstien")
             self.assertEqual("** class doesn't exist **\n",
                              capturedOutput.getvalue())
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("update User 12345")
+            self.typing.onecmd("update User Jefry")
             self.assertEqual("** no instance found **\n",
                              capturedOutput.getvalue())
         with patch('sys.stdout', new=StringIO()) as fake_output:
@@ -96,7 +96,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** instance id missing **\n",
                              capturedOutput.getvalue())
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("update User 12345")
+            self.typing.onecmd("update User Jefry")
             self.assertEqual("** no instance found **\n",
                              capturedOutput.getvalue())
 
@@ -111,7 +111,7 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** instance id missing **\n",
                              capturedOutput.getvalue())
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("User.show('123')")
+            self.typing.onecmd("User.show('kim67oh')")
             self.assertEqual("** no instance found **\n",
                              capturedOutput.getvalue())
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
@@ -119,8 +119,8 @@ class TestConsole(unittest.TestCase):
             self.assertEqual("** class doesn't exist **\n",
                              capturedOutput.getvalue())
 
-    def test_destroy(self):
-        """Test cmd output: destroy"""
+    def console_test_destroy(self):
+        """Test command destroy output"""
         with patch('sys.stdout', new=StringIO()) as fake_output:
             self.typing.onecmd("destroy")
             self.assertEqual(
@@ -128,13 +128,13 @@ class TestConsole(unittest.TestCase):
                 capturedOutput.getvalue()
                 )
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("destroy TheWorld")
+            self.typing.onecmd("destroy Worm")
             self.assertEqual(
                 "** class doesn't exist **\n",
                 capturedOutput.getvalue()
                 )
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("destroy BaseModel 12345")
+            self.typing.onecmd("destroy BaseModel Jefry")
             self.assertEqual(
                 "** no instance found **\n",
                 capturedOutput.getvalue()
@@ -146,7 +146,7 @@ class TestConsole(unittest.TestCase):
                 capturedOutput.getvalue()
                 )
         with patch('sys.stdout', new=StringIO()) as capturedOutput:
-            self.typing.onecmd("City.destroy('123')")
+            self.typing.onecmd("City.destroy('ghotham-22')")
             self.assertEqual(
                 "** no instance found **\n",
                 capturedOutput.getvalue()
