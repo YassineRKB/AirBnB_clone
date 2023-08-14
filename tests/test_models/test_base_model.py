@@ -30,11 +30,11 @@ class TestBaseModel(unittest.TestCase):
         """rerun"""
         pass
 
-    def basemodel_test_docstrings(self):
+    def test_basemodel_docstrings(self):
         """Test: models.base_model module for documentation"""
         self.assertIsNotNone(models.base_model.__doc__)
 
-    def basemodel_test_method_docs(self):
+    def test_basemodel_method_docs(self):
         """Test: methods in BaseModel for documentation"""
         methods = [
             BaseModel.__init__,
@@ -45,21 +45,21 @@ class TestBaseModel(unittest.TestCase):
         for meth in methods:
             self.assertIsNotNone(meth.__doc__)
 
-    def basemodel_test_class_doc(self):
+    def test_basemodel_class_doc(self):
         """Test: BaseModel class for documentation"""
         self.assertIsNotNone(BaseModel.__doc__)
 
-    def basemodel_test_functions_check(self):
+    def test_basemodel_functions_check(self):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
         self.assertIsNotNone(BaseModel.save.__doc__)
 
-    def basemodel_test_attributes(self):
+    def test_basemodel_attributes(self):
         self.assertTrue(hasattr(BaseModel, "__init__"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
         self.assertTrue(hasattr(BaseModel, "save"))
 
-    def basemodel_test_init_attribute(self):
+    def test_basemodel_init_attribute(self):
         """Test: basemodel id"""
         test_model = BaseModel()
         test_model2 = BaseModel()
@@ -85,7 +85,7 @@ class TestBaseModel(unittest.TestCase):
         test_model.save()
         self.assertGreater(test_model.updated_at, old)
 
-    def basemodel_test_kwargs_input(self):
+    def test_basemodel_kwargs_input(self):
         """Test: BaseModel: kwargs init"""
         dic = {
             "id": "apocalypse_preper-id-01",
@@ -101,7 +101,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(test_model.created_at, dt)
         self.assertIsInstance(test_model.updated_at, dt)
 
-    def basemodel_test_to_dict_data_type(self):
+    def test_basemodel_to_dict_data_type(self):
         """Test: data types after to_dict"""
         test_model = BaseModel()
         test_model.name = "henrey"
