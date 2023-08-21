@@ -1,0 +1,11 @@
+--2023-08-21 15:33:30--  https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon.png
+Resolving s3.amazonaws.com (s3.amazonaws.com)... 54.231.160.40, 52.217.117.192, 52.217.161.192, ...
+Connecting to s3.amazonaws.com (s3.amazonaws.com)|54.231.160.40|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 2962 (2.9K) [image/png]
+Saving to: ‘icon.png’
+
+     0K ..                                                    100% 1.81M=0.002s
+
+2023-08-21 15:33:41 (1.81 MB/s) - ‘icon.png’ saved [2962/2962]
+
