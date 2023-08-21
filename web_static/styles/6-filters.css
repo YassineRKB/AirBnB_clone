@@ -40,3 +40,27 @@ section.filters button:hover {
 	margin: 0px 0px 20px 30px;
 	text-align: left;
 }
+.popover {
+	display: none;
+	background-color: #FAFAFA;
+	position: relative;
+	border: 1px #DDDDDD solid;
+	border-radius: 4px;
+	z-index: 1;
+	text-align: left;
+	padding: 10px 0px 10px 30px;
+	height: auto;
+	padding: 20px 0px 20px 30px;
+}
+.popover h2 {
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px;
+}
+ul {
+	list-style-type: none;
+	margin-top: 0px;
+}
+.amenities:hover .popover, .locations:hover .popover {
+	display: block;
+}
