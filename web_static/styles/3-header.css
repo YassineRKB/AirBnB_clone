@@ -2,6 +2,6 @@ header {
 	height: 70px; width: 100%;
 	background-color: #FF0000;
 	color: white;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px #CCCCCC solid;
 	background: url(../images/logo.png) 20px center no-repeat;
 }
