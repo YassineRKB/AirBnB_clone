@@ -21,6 +21,7 @@ article {
 	vertical-align: top;
 }
 .places div.price_by_night {
+	top: -80px; 
 	color: #FF5A5F;
 	border: 4px solid #FF5A5F;
 	border-radius: 100%;
@@ -30,12 +31,11 @@ article {
 	font-size: 30px;
 	position: relative;
 	float: right;
-	top: -80px; 
 }
 .places div.information {
-	height: 80px;
 	border-top: 1px solid #DDDDDD;
 	border-bottom: 1px solid #DDDDDD;
+	height: 80px;
 }
 .max_guest {
 	background-image: url("../images/icon_group.png");
@@ -52,10 +52,10 @@ div.user, div.description {
 	margin-top: 10px;
 }
 .places div.max_guest, div.number_rooms, div.number_bathrooms {
+	display: inline-block;
 	line-height: 140px;
 	width: 100px;
 	height: 100%;
-	display: inline-block;
-	background-position: 50% 5px;
 	background-repeat: no-repeat;
+	background-position: 50% 5px;
 }
